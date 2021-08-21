@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="JavaScript Calculator">
+    <meta name="keywords" content="JavaScript, HTML, CSS">
+    <meta name="author" content="Bruce Bauer">
+    <title>Minimum, Maximum, Average</title>
+    <link rel="stylesheet" type="text/css" href="assets/style/calculator.css">
+</head>
+<body>
+<form id="myform">
+    <div class="formcontainer">
+        <h1>Minimum, Maximum, Average</h1>
+        <fieldset id="detail">
+            <legend>Calculator (AJAX)</legend>  
+            <br>
+            
+            <label class="formlabel" for="Operand1">Operand 1: </label>
+            <input type="text" id="Operand1" name="Operand1" size="15" maxlength="15">
+            <br><br>
+
+            <label class="formlabel" for="Operand2">Operand 2: </label>
+            <input type="text" id="Operand2" name="Operand2" size="15" maxlength="15">
+            <br><br>
+
+            <label class="formlabel" for="Operand3">Operand 3: </label>
+            <input type="text" id="Operand3" name="Operand3" size="15" maxlength="15">
+            <br><br>
+
+            <label class="formlabel">Operator: </label>
+                <label for="MinOperator">
+                    <input type="radio" name="Operator" id="MinOperator" value = "Min">Min
+                </label>
+                <label for="MaxOperator">
+                    <input type="radio" name="Operator" id="MaxOperator" value = "Max">Max
+                </label>
+                <label for="AvgOperator">
+                    <input type="radio" name="Operator" id="AvgOperator" value = "Avg">Avg
+                </label>
+            <label for="Operator" class="error" id="OperatorMsg"></label>
+            <br><br>
+      
+
+            <label class="formlabel">Result: </label>
+            <span id="Result"></span>
+            <br><br>
+
+            <input type="button" value="Calculate" name="Calculate" onclick="calculate();">
+            <input type="button" value="Clear" name="Clear" onclick="clearform();">
+
+        </fieldset>
+    </div>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="assets/scripts/calculator.js"></script>
+<script>
+// just for the demos, avoids form submit
+//jQuery.validator.setDefaults({
+//  debug: true,
+//  success: "valid"
+//});
+$( "#myform" ).validate({
+  debug: true,
+  rules: {
+    Operand1: {
+      required: true,
+      number: true
+    },
+    Operand2: {
+      required: true,
+      number: true
+    },
+    Operand3: {
+      required: true,
+      number: true
+    },
+    Operator: {
+      required: true
+    },
+  },
+});
+</script>
+</body>
+</html>
